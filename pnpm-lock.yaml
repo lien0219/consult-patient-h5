@@ -55,9 +55,9 @@ devDependencies:
   npm-run-all2:
     specifier: ^6.1.1
     version: 6.1.1
-  postcss-px-to-viewport:
-    specifier: ^1.1.1
-    version: 1.1.1
+  postcss-px-to-viewport-8-plugin:
+    specifier: ^1.2.3
+    version: 1.2.3
   prettier:
     specifier: ^3.0.3
     version: 3.0.3
@@ -1993,11 +1993,10 @@ packages:
       vue-demi: 0.14.6(vue@3.3.11)
     dev: false
 
-  /postcss-px-to-viewport@1.1.1:
-    resolution: {integrity: sha512-2x9oGnBms+e0cYtBJOZdlwrFg/mLR4P1g2IFu7jYKvnqnH/HLhoKyareW2Q/x4sg0BgklHlP1qeWo2oCyPm8FQ==}
+  /postcss-px-to-viewport-8-plugin@1.2.3:
+    resolution: {integrity: sha512-HRNm9ZE4/7PWw4a6C0GmDxdnSJaQKtKxIqufMpPYymhKJM/3WbZCIuktyE8N5TXinXVIMkOJ1N6erlpoxvNMYA==}
     dependencies:
       object-assign: 4.1.1
-      postcss: 8.4.33
     dev: true
 
   /postcss-selector-parser@6.0.15:

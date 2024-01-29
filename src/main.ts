@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-//@ts-ignore
-import pinia from './stores'
+// import pinia from './stores'
 import router from './router'
 
 // 全局样式样式
@@ -11,6 +10,6 @@ import './styles/mian.scss'
 const app = createApp(App)
 
 app.use(router)
-app.use(pinia)
+// app.use(pinia)
 
 app.mount('#app')
