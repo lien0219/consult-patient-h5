@@ -1,12 +1,11 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
+import { createPinia } from 'pinia'
+import persist from 'pinia-plugin-persistedstate'
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
+const pinia = createPinia()
 
-  return { count, doubleCount, increment }
-})
+pinia.use(persist)
+
+export default pinia
+
+export * from './modules/user'
+export * from './modules/counter'
