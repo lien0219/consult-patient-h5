@@ -1,7 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <router-view></router-view>
+  <div class="login-page">
+    <cp-nav-bar title="登录"></cp-nav-bar>
+  </div>
 </template>
 
 <style lang="scss" scoped></style>
