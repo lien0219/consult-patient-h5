@@ -1,8 +1,13 @@
 // import { OrderType } from '@/enums'
-// import { cancelOrder, deleteOrder, followOrUnfollow, getPrescriptionPic } from '@/services/consult'
+import {
+  cancelOrder,
+  deleteOrder,
+  followOrUnfollow,
+  getPrescriptionPic
+} from '@/services/consult'
 // import { getMedicalOrderDetail } from '@/services/order'
 import { sendMobileCode } from '@/services/user'
-// import type { ConsultOrderItem, FollowType } from '@/types/consult'
+import type { ConsultOrderItem, FollowType } from '@/types/consult'
 // import type { OrderDetail } from '@/types/order'
 import type { CodeType } from '@/types/user'
 import {
@@ -16,19 +21,19 @@ import type { Ref } from 'vue'
 import { onUnmounted } from 'vue'
 import { ref, onMounted } from 'vue'
 
-// export const useFollow = (type: FollowType = 'doc') => {
-//   const loading = ref(false)
-//   const follow = async (item: { id: string; likeFlag: 0 | 1 }) => {
-//     loading.value = true
-//     try {
-//       await followOrUnfollow(item.id, type)
-//       item.likeFlag = item.likeFlag === 1 ? 0 : 1
-//     } finally {
-//       loading.value = false
-//     }
-//   }
-//   return { loading, follow }
-// }
+export const useFollow = (type: FollowType = 'doc') => {
+  const loading = ref(false)
+  const follow = async (item: { id: string; likeFlag: 0 | 1 }) => {
+    loading.value = true
+    try {
+      await followOrUnfollow(item.id, type)
+      item.likeFlag = item.likeFlag === 1 ? 0 : 1
+    } finally {
+      loading.value = false
+    }
+  }
+  return { loading, follow }
+}
 
 // 提供查看处方
 // export const useShowPrescription = () => {
