@@ -1,4 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useUserStore } from '@/stores'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+NProgress.configure({
+  showSpinner: false
+})
 
 // createRouter 创建路由实例，===> new VueRouter()
 // history 是路由模式，hash模式，history模式
@@ -14,9 +21,57 @@ const router = createRouter({
   routes: [
     {
       path: '/login',
-      component: () => import('@/views/Login/index.vue')
+      component: () => import('@/views/Login/index.vue'),
+      meta: { title: '登录' }
+    },
+    {
+      path: '/user/patient',
+      component: () => import('@/views/User/PatientPage.vue'),
+      meta: { title: '家庭档案' }
+    },
+
+    {
+      path: '/',
+      component: () => import('@/views/Layout/index.vue'),
+      redirect: '/home',
+      children: [
+        {
+          path: '/home',
+          component: () => import('@/views/Home/index.vue'),
+          meta: { title: '首页' }
+        },
+        {
+          path: '/article',
+          component: () => import('@/views/Article/index.vue'),
+          meta: { title: '健康百科' }
+        },
+        {
+          path: '/notify',
+          component: () => import('@/views/Notify/index.vue'),
+          meta: { title: '消息通知' }
+        },
+        {
+          path: '/user',
+          component: () => import('@/views/User/index.vue'),
+          meta: { title: '个人中心' }
+        }
+      ]
     }
   ]
 })
+// 前置导航守卫
+router.beforeEach((to) => {
+  NProgress.start()
+  const store = useUserStore()
+  // 白名单
+  const wihteList = ['/login', '/login/callback']
+  // 如果没有token并且不在白名单里面，重定向到登录
+  if (!store.user?.token && !wihteList.includes(to.path)) return '/login'
+})
 
+//后置
+router.afterEach((to) => {
+  document.title = `${to.meta.title || ''}-优医问诊`
+  NProgress.done()
+})
 export default router

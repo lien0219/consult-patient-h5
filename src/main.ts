@@ -7,6 +7,8 @@ import router from './router'
 import 'vant/lib/index.css'
 import './styles/mian.scss'
 
+import 'virtual:svg-icons-register'
+
 const app = createApp(App)
 
 app.use(router)
