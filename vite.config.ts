@@ -7,9 +7,16 @@ import { VantResolver } from 'unplugin-vue-components/resolvers'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 
+import { createHtmlPlugin } from 'vite-plugin-html'
+
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    port: 80,
+    host: true
+  },
   plugins: [
+    createHtmlPlugin(),
     vue({
       // 开启解构Props响应式转换功能
       reactivityTransform: true
