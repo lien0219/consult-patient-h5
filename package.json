@@ -50,6 +50,7 @@
     "lint-staged": "^15.2.0",
     "mockjs": "^1.1.0",
     "npm-run-all2": "^6.1.1",
+    "plop": "^4.0.1",
     "postcss-px-to-viewport-8-plugin": "^1.2.3",
     "prettier": "^3.0.3",
     "sass": "^1.70.0",
