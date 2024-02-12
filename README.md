@@ -63,3 +63,5 @@ pnpm lint
 ├── views `页面`
 ├── main.ts `入口文件`
 └──App.vue `根组件`
+
+![alt text](image.png)
