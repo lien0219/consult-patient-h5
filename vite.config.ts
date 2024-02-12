@@ -8,6 +8,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 
 import { createHtmlPlugin } from 'vite-plugin-html'
+import { viteMockServe } from 'vite-plugin-mock'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,7 +16,17 @@ export default defineConfig({
     port: 80,
     host: true
   },
+  test: {
+    environment: 'happy-dom'
+  },
   plugins: [
+    viteMockServe({
+      // 在哪个文件夹下编写模拟接口的代码
+      mockPath: './src/mock',
+      // 在开发环境开启mock
+      localEnabled: true
+    }),
+
     createHtmlPlugin(),
     vue({
       // 开启解构Props响应式转换功能
