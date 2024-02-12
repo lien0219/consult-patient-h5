@@ -1,14 +1,14 @@
-// import { OrderType } from '@/enums'
+import { OrderType } from '@/enums'
 import {
   cancelOrder,
   deleteOrder,
   followOrUnfollow,
   getPrescriptionPic
 } from '@/services/consult'
-// import { getMedicalOrderDetail } from '@/services/order'
+import { getMedicalOrderDetail } from '@/services/order'
 import { sendMobileCode } from '@/services/user'
 import type { ConsultOrderItem, FollowType } from '@/types/consult'
-// import type { OrderDetail } from '@/types/order'
+import type { OrderDetail } from '@/types/order'
 import type { CodeType } from '@/types/user'
 import {
   showFailToast,
@@ -36,67 +36,67 @@ export const useFollow = (type: FollowType = 'doc') => {
 }
 
 // 提供查看处方
-// export const useShowPrescription = () => {
-//   const onShowPrescription = async (id?: string) => {
-//     if (id) {
-//       const res = await getPrescriptionPic(id)
-//       showImagePreview([res.data.url])
-//     }
-//   }
-//   return { onShowPrescription }
-// }
+export const useShowPrescription = () => {
+  const onShowPrescription = async (id?: string) => {
+    if (id) {
+      const res = await getPrescriptionPic(id)
+      showImagePreview([res.data.url])
+    }
+  }
+  return { onShowPrescription }
+}
 
 // 取消订单
-// export const useCancelOrder = () => {
-//   const loading = ref(false)
-//   const cancelConsultOrder = async (item: ConsultOrderItem) => {
-//     try {
-//       loading.value = true
-//       await cancelOrder(item.id)
-//       item.status = OrderType.ConsultCancel
-//       item.statusValue = '已取消'
-//       showSuccessToast('取消成功')
-//     } catch (error) {
-//       showFailToast('取消失败')
-//     } finally {
-//       loading.value = false
-//     }
-//   }
-//   return { loading, cancelConsultOrder }
-// }
+export const useCancelOrder = () => {
+  const loading = ref(false)
+  const cancelConsultOrder = async (item: ConsultOrderItem) => {
+    try {
+      loading.value = true
+      await cancelOrder(item.id)
+      item.status = OrderType.ConsultCancel
+      item.statusValue = '已取消'
+      showSuccessToast('取消成功')
+    } catch (error) {
+      showFailToast('取消失败')
+    } finally {
+      loading.value = false
+    }
+  }
+  return { loading, cancelConsultOrder }
+}
 
 // 删除订单
-// export const useDeleteOrder = (cb: () => void) => {
-//   const loading = ref(false)
-//   const deleteConsultOrder = async (item: ConsultOrderItem) => {
-//     try {
-//       loading.value = true
-//       await deleteOrder(item.id)
-//       showSuccessToast('删除成功')
-//       cb && cb()
-//     } catch (error) {
-//       showFailToast('删除失败')
-//     } finally {
-//       loading.value = false
-//     }
-//   }
-//   return { loading, deleteConsultOrder }
-// }
+export const useDeleteOrder = (cb: () => void) => {
+  const loading = ref(false)
+  const deleteConsultOrder = async (item: ConsultOrderItem) => {
+    try {
+      loading.value = true
+      await deleteOrder(item.id)
+      showSuccessToast('删除成功')
+      cb && cb()
+    } catch (error) {
+      showFailToast('删除失败')
+    } finally {
+      loading.value = false
+    }
+  }
+  return { loading, deleteConsultOrder }
+}
 
-// export const useOrderDetail = (id: string) => {
-//   const order = ref<OrderDetail>()
-//   const loading = ref(false)
-//   onMounted(async () => {
-//     try {
-//       loading.value = true
-//       const res = await getMedicalOrderDetail(id)
-//       order.value = res.data
-//     } finally {
-//       loading.value = false
-//     }
-//   })
-//   return { loading, order }
-// }
+export const useOrderDetail = (id: string) => {
+  const order = ref<OrderDetail>()
+  const loading = ref(false)
+  onMounted(async () => {
+    try {
+      loading.value = true
+      const res = await getMedicalOrderDetail(id)
+      order.value = res.data
+    } finally {
+      loading.value = false
+    }
+  })
+  return { loading, order }
+}
 
 // 发送短信验证码
 export const useMobileCode = (

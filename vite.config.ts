@@ -10,7 +10,10 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({
+      // 开启解构Props响应式转换功能
+      reactivityTransform: true
+    }),
     Components({
       dts: false,
       resolvers: [VantResolver({ importStyle: false })]
